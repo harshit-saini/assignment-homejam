@@ -7,6 +7,7 @@ import "@glidejs/glide/dist/css/glide.core.min.css"
 import Navbar from '../components/Navbar'
 import Rating from '../components/Rating'
 import ShowCard from '../components/ShowCard'
+import ReviewCard from '../components/ReviewCard'
 
 const HeroSection = styled.div`
   background-image: url("/images/hero-section.png");
@@ -57,6 +58,10 @@ const Heading = styled.h2`
   }
 `
 
+const Reviews = styled.div`
+  padding-top : 100px;
+`
+
 // this is just temperarory data : this could be comming from an API
 const Labels = ["label", "label", "label", "label"]
 
@@ -91,6 +96,87 @@ const shows = [
   }
 ]
 
+const reviews = [
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+  {
+    name: "Hellen Jummy",
+    profileImage: "/images/people/Hellen Jummy.png",
+    location: "Palo Alto, CA",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
+  },
+]
+
 const Home = () => {
 
 
@@ -99,7 +185,7 @@ const Home = () => {
   other it will give error
   */
   useEffect(() => {
-    new Glide(".glide", {
+    const obj = new Glide(".glide2", {
       type: 'slider',
       startAt: 0,
       perView: 4,
@@ -117,6 +203,30 @@ const Home = () => {
         }
       }
     }).mount()
+
+  }, [])
+
+
+  useEffect(() => {
+    const obj = new Glide(".glide3", {
+      type: 'slider',
+      startAt: 0,
+      perView: 3,
+      gap: 20,
+      bound: true,
+      breakpoints: {
+        556: {
+          perView: 1
+        },
+        768: {
+          perView: 2
+        },
+        992: {
+          perView: 3
+        }
+      }
+    }).mount()
+
   }, [])
 
   return (
@@ -138,7 +248,7 @@ const Home = () => {
       <Shows>
         <div className="container">
           <Heading>Upcoming Shows</Heading>
-          <div className="glide">
+          <div className="glide2">
             <div className="glide__track" data-glide-el="track">
               <div className="glide__slides">
                 {/* this is the glide__slide */}
@@ -149,8 +259,24 @@ const Home = () => {
               </div>
             </div>
           </div>
+
         </div>
       </Shows>
+      <Reviews>
+        <div className="container" >
+          <Heading>Reviews</Heading>
+          {/* <ReviewCard name={reviews[0].name} profileImage={reviews[0].profileImage} location={reviews[0].location} review={reviews[0].review} /> */}
+          <div className="glide3">
+            <div className="glide__track" data-glide-el="track">
+              <div className="glide__slides">
+                {reviews.map((review, index) => (
+                  <ReviewCard key={index}{...review} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reviews>
     </>
   )
 }
