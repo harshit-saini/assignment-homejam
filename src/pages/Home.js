@@ -29,9 +29,6 @@ const Ratings = styled.div`
   /* position: absolute; */
   margin-top:calc(100vh - 300px);
   bottom  : 20px;
-  display: flex;
-  justify-content: space-between;
-  padding : 0px 100px;
 
 `
 
@@ -185,6 +182,36 @@ const Home = () => {
   other it will give error
   */
   useEffect(() => {
+
+    const forRatings = new Glide(".glide1", {
+      type: 'slider',
+      startAt: 0,
+      perView: 4,
+      gap: 0,
+      bound: true,
+      breakpoints: {
+        556: {
+          perView: 1,
+          peek: {
+            before: 0,
+            after: 100
+          }
+        },
+        768: {
+          perView: 2,
+          peek: {
+            after: 100
+          }
+        },
+        992: {
+          perView: 3,
+          peek: {
+            after: 100
+          }
+        }
+      }
+    }).mount()
+
     const obj = new Glide(".glide2", {
       type: 'slider',
       startAt: 0,
@@ -239,9 +266,15 @@ const Home = () => {
             <p className="fs-4 text-light" style={{ maxWidth: "600px" }}>Live from their sofa to yours. Get closer to your favorite artists, and never miss out.</p>
           </Main>
           <Ratings>
-            {Labels.map(label => (
-              <Rating label={label} />
-            ))}
+            <div className="glide1">
+              <div className="glide__track" data-glide-el="track">
+                <div className="glide__slides">
+                  {Labels.map(label => (
+                    <Rating label={label} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </Ratings>
         </div>
       </HeroSection >
@@ -255,7 +288,6 @@ const Home = () => {
                 {shows.map((show, index) => (
                   <ShowCard key={index} {...show} />
                 ))}
-
               </div>
             </div>
           </div>
