@@ -9,6 +9,8 @@ import Rating from '../components/Rating'
 import ShowCard from '../components/ShowCard'
 import ReviewCard from '../components/ReviewCard'
 
+import { Labels, reviews, shows } from '../data/dummyData'
+
 const HeroSection = styled.div`
   background-image: url("/images/hero-section.png");
   background-position : center;
@@ -59,120 +61,6 @@ const Reviews = styled.div`
   padding-top : 100px;
 `
 
-// this is just temperarory data : this could be comming from an API
-const Labels = ["label", "label", "label", "label"]
-
-const shows = [
-  {
-    artistImage: `/images/artists/Benny Dayal.png`,
-    artistName: "Benny Dayal",
-    category: "Folk",
-    infoLink: "#",
-    ticketLink: "#"
-  },
-  {
-    artistImage: `/images/artists/Vijay Yesudas.png`,
-    artistName: "Vijay Yesudas",
-    category: "Bollywood",
-    infoLink: "#",
-    ticketLink: "#"
-  },
-  {
-    artistImage: `/images/artists/Andrea Jeremiah.png`,
-    artistName: "Andrea Jeremiah",
-    category: "Folk",
-    infoLink: "#",
-    ticketLink: "#"
-  },
-  {
-    artistImage: `/images/artists/Shilpa Rao.png`,
-    artistName: "Shilpa Rao",
-    category: "Folk",
-    infoLink: "#",
-    ticketLink: "#"
-  }
-]
-
-const reviews = [
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-  {
-    name: "Hellen Jummy",
-    profileImage: "/images/people/Hellen Jummy.png",
-    location: "Palo Alto, CA",
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing.",
-  },
-]
 
 const Home = () => {
 
@@ -212,7 +100,7 @@ const Home = () => {
       }
     }).mount()
 
-    const obj = new Glide(".glide2", {
+    const forShows = new Glide(".glide2", {
       type: 'slider',
       startAt: 0,
       perView: 4,
@@ -235,7 +123,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    const obj = new Glide(".glide3", {
+    const forReviews = new Glide(".glide3", {
       type: 'slider',
       startAt: 0,
       perView: 3,
