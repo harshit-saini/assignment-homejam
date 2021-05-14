@@ -1,6 +1,27 @@
 
 // this is just temperarory data : this could be comming from an API
-export const Labels = ["label", "label", "label", "label"]
+export const Labels = [
+  {
+    icon: "heart",
+    label: "Label",
+    rating: "760"
+  },
+  {
+    icon: "heart",
+    label: "Label",
+    rating: "760"
+  },
+  {
+    icon: "heart",
+    label: "Label",
+    rating: "760"
+  },
+  {
+    icon: "heart",
+    label: "Label",
+    rating: "760"
+  },
+]
 
 export const shows = [
   {

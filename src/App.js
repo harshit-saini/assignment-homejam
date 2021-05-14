@@ -1,7 +1,6 @@
 import './App.css';
 import Home from './pages/Home';
 import { Route } from 'react-router-dom'
-import './utils/glide'
 
 
 function App() {

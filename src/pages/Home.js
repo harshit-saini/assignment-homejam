@@ -11,6 +11,7 @@ import ReviewCard from '../components/ReviewCard'
 
 import { Labels, reviews, shows } from '../data/dummyData'
 
+// **** Styled Components : Start
 const HeroSection = styled.div`
   background-image: url("/images/hero-section.png");
   background-position : center;
@@ -39,6 +40,7 @@ const Shows = styled.div`
   padding-top : 100px;
 
 `
+
 const Heading = styled.h2`
 
   color : white;
@@ -58,8 +60,20 @@ const Heading = styled.h2`
 `
 
 const Reviews = styled.div`
-  padding-top : 100px;
+  padding : 100px 0;
 `
+
+const SectionStart = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  & > div{
+    color: #E5C558;
+    cursor : pointer;
+  }
+`
+// **** styled components : End
 
 
 const Home = () => {
@@ -119,10 +133,6 @@ const Home = () => {
       }
     }).mount()
 
-  }, [])
-
-
-  useEffect(() => {
     const forReviews = new Glide(".glide3", {
       type: 'slider',
       startAt: 0,
@@ -142,6 +152,12 @@ const Home = () => {
       }
     }).mount()
 
+    return () => {
+      forReviews.destroy();
+      forShows.destroy();
+      forRatings.destroy();
+    }
+
   }, [])
 
   return (
@@ -158,7 +174,7 @@ const Home = () => {
               <div className="glide__track" data-glide-el="track">
                 <div className="glide__slides">
                   {Labels.map(label => (
-                    <Rating label={label} />
+                    <Rating {...label} />
                   ))}
                 </div>
               </div>
@@ -168,7 +184,10 @@ const Home = () => {
       </HeroSection >
       <Shows>
         <div className="container">
-          <Heading>Upcoming Shows</Heading>
+          <SectionStart>
+            <Heading>Upcoming Shows</Heading>
+            <div>View All</div>
+          </SectionStart>
           <div className="glide2">
             <div className="glide__track" data-glide-el="track">
               <div className="glide__slides">
@@ -179,13 +198,16 @@ const Home = () => {
               </div>
             </div>
           </div>
-
         </div>
       </Shows>
       <Reviews>
         <div className="container" >
-          <Heading>Reviews</Heading>
-          {/* <ReviewCard name={reviews[0].name} profileImage={reviews[0].profileImage} location={reviews[0].location} review={reviews[0].review} /> */}
+          <SectionStart>
+            <Heading>Reviews</Heading>
+            <div>
+              12
+            </div>
+          </SectionStart>
           <div className="glide3">
             <div className="glide__track" data-glide-el="track">
               <div className="glide__slides">

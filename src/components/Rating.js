@@ -7,18 +7,36 @@ const Cricle = styled.div`
   height: 180px;
   width: 180px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left : 50%;
+  transform: translateX(-50%);
+
+  & div{
+    margin-bottom: 6px;
+  }
+
+  & p{
+    font-size: 20px;
+    color: grey;
+  }
+  
 
 `
 
-const Rating = ({ label }) => {
+const Rating = ({ label, icon, rating }) => {
   return (
-    <Cricle >
-      <div>
-        <p>{label}</p>
-      </div>
-    </Cricle>
+
+    <div className="glide__slide">
+      <Cricle >
+        <div className={`fas fa-${icon} fs-3`}></div>
+        <div>{rating}</div>
+        <div>
+          <p>{label}</p>
+        </div>
+      </Cricle>
+    </div>
   )
 }
 

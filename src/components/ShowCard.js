@@ -8,6 +8,7 @@ const Card = styled.div`
   border-radius: 8px;
   position: relative;
   color : white;
+  /* cursor : pointer; */
 
   &::before{
     content: "";
@@ -43,8 +44,17 @@ const StyledLink = styled(Link)`
   width: 69px;
   height: 32px;
   text-decoration : none;
+  margin-top:20px;
 `
+const Icon = styled.i`
+  cursor: pointer;
+  color: #253176;
+  transform: rotate(90deg);
 
+  &:hover{
+    color: #B727F3;
+  }
+`
 
 
 const ShowCard = ({ artistImage, artistName, category, infoLink, ticketLink }) => {
@@ -53,8 +63,11 @@ const ShowCard = ({ artistImage, artistName, category, infoLink, ticketLink }) =
       <img src={artistImage} style={{ objectFit: "cover" }} className="card-img-top" alt={artistName} />
       <div className="card-body">
         <Category>{category}</Category>
-        <h5 className="card-title mt-3">{artistName}</h5>
-        <StyledLink to={infoLink} class="">More Info <i style={{ fontSize: "12px" }} className="fas fa-arrow-right"></i></StyledLink>
+        <h5 className="card-title mt-3 mb-4">{artistName}</h5>
+        <div className="d-flex justify-content-between align-items-baseline">
+          <StyledLink to={infoLink} class="">More Info <i style={{ fontSize: "12px" }} className="fas fa-arrow-right"></i></StyledLink>
+          <Icon className="fas fa-ticket-alt fs-3"></Icon>
+        </div>
       </div>
     </Card>
   )
