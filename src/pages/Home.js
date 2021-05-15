@@ -24,7 +24,7 @@ const HeroSection = styled.div`
 
 const Main = styled.div`
   position: absolute;
-  top: 250px;
+  top: 30%;
 
 `
 
@@ -38,6 +38,7 @@ const Ratings = styled.div`
 const Shows = styled.div`
   background-color: #0A0B1A;
   padding-top : 100px;
+  padding-bottom : 100px;
 
 `
 
@@ -60,7 +61,8 @@ const Heading = styled.h2`
 `
 
 const Reviews = styled.div`
-  padding : 100px 0;
+  /* padding : 100px; */
+  position : relative;
 `
 
 const SectionStart = styled.div`
@@ -73,6 +75,15 @@ const SectionStart = styled.div`
     cursor : pointer;
   }
 `
+
+const SlideContols = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 0;
+`
+
+
+
 // **** styled components : End
 
 
@@ -91,6 +102,7 @@ const Home = () => {
       perView: 4,
       gap: 0,
       bound: true,
+      autoplay: 2000,
       breakpoints: {
         556: {
           perView: 1,
@@ -122,13 +134,25 @@ const Home = () => {
       bound: true,
       breakpoints: {
         556: {
-          perView: 1
+          perView: 1,
+          peek: {
+            before: 0,
+            after: 50
+          }
         },
         768: {
-          perView: 2
+          perView: 2,
+          peek: {
+            before: 0,
+            after: 50
+          }
         },
         992: {
-          perView: 3
+          perView: 3,
+          peek: {
+            before: 0,
+            after: 50
+          }
         }
       }
     }).mount()
@@ -137,7 +161,7 @@ const Home = () => {
       type: 'slider',
       startAt: 0,
       perView: 3,
-      gap: 20,
+      gap: 0,
       bound: true,
       breakpoints: {
         556: {
@@ -202,13 +226,17 @@ const Home = () => {
       </Shows>
       <Reviews>
         <div className="container" >
-          <SectionStart>
+          <SectionStart style={{ position: "relative" }}>
             <Heading>Reviews</Heading>
             <div>
-              12
-            </div>
+              3 of 12
+              </div>
           </SectionStart>
           <div className="glide3">
+            <SlideContols className="container d-flex justify-content-end pe-5 me-5" data-glide-el="controls" style={{ color: "#E5C558" }}>
+              <span className="me-3" data-glide-dir="<"><i className="fas fa-arrow-left"></i></span>
+              <span className="me-5" data-glide-dir=">"><i className="fas fa-arrow-right"></i></span>
+            </SlideContols>
             <div className="glide__track" data-glide-el="track">
               <div className="glide__slides">
                 {reviews.map((review, index) => (

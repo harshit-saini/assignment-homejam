@@ -8,7 +8,6 @@ const Card = styled.div`
   border-radius: 16px;
   padding : 32px;
   color: white;
-  /* z-index: 1; */
 
   &::after{
   content : "";
@@ -28,8 +27,8 @@ const Card = styled.div`
 
 const ReviewCard = ({ name, profileImage, location, review }) => {
   return (
-    <div>
-      <Card className=" glide__slide" className="m-3">
+    <div className="p-3">
+      <Card className="card glide__slide">
         <div style={{ marginBottom: "28px" }} className="d-flex" >
           <img src={profileImage} alt={name} height="48ox" width="48px" />
           <div className="ms-4 mt-1">

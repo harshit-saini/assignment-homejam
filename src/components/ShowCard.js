@@ -59,7 +59,7 @@ const Icon = styled.i`
 
 const ShowCard = ({ artistImage, artistName, category, infoLink, ticketLink }) => {
   return (
-    <Card className="card glide__slide" className="m-3" style={{ width: "260px" }}>
+    <Card className="card glide__slide" className="m-3" >
       <img src={artistImage} style={{ objectFit: "cover" }} className="card-img-top" alt={artistName} />
       <div className="card-body">
         <Category>{category}</Category>
