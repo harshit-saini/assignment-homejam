@@ -13,7 +13,7 @@ import { Labels, reviews, shows } from '../data/dummyData'
 
 // **** Styled Components : Start
 const HeroSection = styled.div`
-  background-image: url("/images/hero-section.png");
+  background-image: url("/images/hero-section.webp");
   background-position : center;
   background-repeat: none;
   min-height: 100vh;
