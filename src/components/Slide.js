@@ -10,7 +10,7 @@ const SlideContols = styled.div`
 `
 
 
-const Slide = ({ children, uniqueName, perView, autoplay = false, controls = false }) => {
+const Slide = ({ children, uniqueName, perView, after = 0, autoplay = false, controls = false }) => {
 
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Slide = ({ children, uniqueName, perView, autoplay = false, controls = fal
     const obj = new Glide(`.${uniqueName}`, {
       type: 'slider',
       startAt: 0,
-      perView: 4,
+      perView: perView,
       gap: 0,
       bound: true,
       autoplay: autoplay,
@@ -27,19 +27,19 @@ const Slide = ({ children, uniqueName, perView, autoplay = false, controls = fal
           perView: 1,
           peek: {
             before: 0,
-            after: 100
+            after: after
           }
         },
         768: {
           perView: 2,
           peek: {
-            after: 100
+            after: after
           }
         },
         992: {
           perView: 3,
           peek: {
-            after: 100
+            after: after
           }
         }
       }
@@ -56,9 +56,9 @@ const Slide = ({ children, uniqueName, perView, autoplay = false, controls = fal
   return (
     <div className={uniqueName}>
       {controls &&
-        <SlideContols className="container d-flex justify-content-end pe-5 me-5" data-glide-el="controls" style={{ color: "#E5C558" }}>
+        <SlideContols className="container d-flex justify-content-end pe-md-5 me-md-5 " data-glide-el="controls" style={{ color: "#E5C558" }}>
           <span className="me-3" data-glide-dir="<"><i className="fas fa-arrow-left"></i></span>
-          <span className="me-5" data-glide-dir=">"><i className="fas fa-arrow-right"></i></span>
+          <span className="me-3" data-glide-dir=">"><i className="fas fa-arrow-right"></i></span>
         </SlideContols>
       }
       <div className="glide__track" data-glide-el="track">
