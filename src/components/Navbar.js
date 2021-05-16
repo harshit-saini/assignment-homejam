@@ -17,8 +17,6 @@ const Navigation = styled.div`
 
   justify-self : end;
   margin-left: auto;
-
-
   position : ${props => props.isMenuOpen ? "fixed" : ""};
   top: 0px;
   bottom: 0px;
@@ -53,11 +51,20 @@ const Navigation = styled.div`
 
   & > div > span {
     margin: 8px 16px;
-    
+    text-decoration : none; 
   }
-  & > div > span:hover {
-    color : #fff;
+
+  & .nav-link{
+    text-decoration : none;
+    color : #ccc;
     cursor : pointer;
+    display: inline-block;
+    padding: 0;
+
+
+    :hover{
+      color: #fff
+    }
   }
 
 `
@@ -109,53 +116,120 @@ const MenuIcon = styled.div`
   }
 `
 
+const SearchBox = styled.div`
+  padding:15px 0px;
+  margin: auto;
+  display : flex;
+  align-items: center;
+  width: 60%;
+
+
+  @media(max-width: 768px){
+    & {
+      width : 80%;
+    }
+  }
+
+  input{
+    border: none;
+    background : none;
+    border-bottom: 2px solid #ccc;
+    color: #fff;
+    flex-grow : 1;
+
+    ::placeholder{
+      color: #ccc;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    ::selection{
+      background : none;
+    }
+
+  }
+
+  :last-child{
+    cursor : pointer;
+  }
+`
+
 
 
 const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("")
 
   const handleMenuClick = () => {
     setIsMenuOpen(isMenuOpen => (!isMenuOpen));
   }
 
+  const hanldeSearchToggle = () => {
+    setIsSearchOpen(isSearchOpen => !isSearchOpen);
+  }
+
+  const handleSearchValue = ({ target: { value } }) => {
+    setSearchValue(value)
+  }
 
   return (
     <Nav>
       <div className="container">
-        <Link to="/">
-          <img src="/images/home-jam-logo.svg" alt="" width="86" height="44" class="d-inline-block align-text-top" />
-        </Link>
 
-        <Navigation isMenuOpen={isMenuOpen}>
-          <div>
-            <span className="not_in_mobile_menu">
-              <i className="fas fa-search me-2" style={{ fontSize: "12px" }}></i>
-              <span className="not-on-mobile-navbar">Search</span>
-            </span>
-            <span className="not-on-mobile-navbar">
-              Help
-            </span>
-            <span className="not-on-mobile-navbar">
-              Account
-            </span>
-            <span className="not_in_mobile_menu">
-              <i className="fas fa-shopping-bag" style={{ fontSize: "12px" }}></i>
-            </span>
-          </div>
-        </Navigation>
+        {!isSearchOpen &&
+          <>
+            <Link to="/">
+              <img src="/images/home-jam-logo.svg" alt="" width="86" height="44" class="d-inline-block align-text-top" />
+            </Link>
 
-        <MenuIcon isMenuOpen={isMenuOpen} onClick={handleMenuClick}>
-          <div className="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className="cross">
-            <span></span>
-            <span></span>
-          </div>
-        </MenuIcon>
+            <Navigation isMenuOpen={isMenuOpen}>
+              <div>
+                <span className="not_in_mobile_menu">
+                  <span className="nav-link" onClick={hanldeSearchToggle}>
+                    <i className="fas fa-search me-2" style={{ fontSize: "12px" }}></i>
+                    <span className="not-on-mobile-navbar ">Search</span>
+                  </span>
+                </span>
+                <span className="not-on-mobile-navbar">
+                  <Link to="#" className="nav-link">Help</Link>
+                </span>
+                <span className="not-on-mobile-navbar">
+                  <Link to="#" className="nav-link">Account</Link>
+                </span>
+                <span className="not_in_mobile_menu">
+                  <Link to="#" className="nav-link"><i className="fas fa-shopping-bag" style={{ fontSize: "12px" }}></i></Link>
+                </span>
+              </div>
+            </Navigation>
+
+            <MenuIcon isMenuOpen={isMenuOpen} onClick={handleMenuClick}>
+              <div className="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div className="cross">
+                <span></span>
+                <span></span>
+              </div>
+            </MenuIcon>
+          </>
+        }
+
+        {
+          isSearchOpen &&
+
+          <SearchBox>
+            <i className="fas fa-search fs-6 me-3"></i>
+            <input type="text" autoComplete="off" name="search" placeholder="Search..." value={searchValue} onChange={handleSearchValue} />
+            <i className="fas ms-3 fs-6" onClick={hanldeSearchToggle}>X</i>
+          </SearchBox>
+
+        }
 
       </div>
     </Nav>
