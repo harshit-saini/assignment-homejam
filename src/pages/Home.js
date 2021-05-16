@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import Glide from '@glidejs/glide'
-import "@glidejs/glide/dist/css/glide.core.min.css"
+
+import Slide from '../components/Slide'
 
 
 import Navbar from '../components/Navbar'
@@ -90,100 +90,6 @@ const SlideContols = styled.div`
 const Home = () => {
 
 
-  /*
-  This is done so that the mount process is done only after the components is loaded
-  other it will give error
-  */
-  useEffect(() => {
-
-    const forRatings = new Glide(".glide1", {
-      type: 'slider',
-      startAt: 0,
-      perView: 4,
-      gap: 0,
-      bound: true,
-      autoplay: 2000,
-      breakpoints: {
-        556: {
-          perView: 1,
-          peek: {
-            before: 0,
-            after: 100
-          }
-        },
-        768: {
-          perView: 2,
-          peek: {
-            after: 100
-          }
-        },
-        992: {
-          perView: 3,
-          peek: {
-            after: 100
-          }
-        }
-      }
-    }).mount()
-
-    const forShows = new Glide(".glide2", {
-      type: 'slider',
-      startAt: 0,
-      perView: 4,
-      gap: 20,
-      bound: true,
-      breakpoints: {
-        556: {
-          perView: 1,
-          peek: {
-            before: 0,
-            after: 50
-          }
-        },
-        768: {
-          perView: 2,
-          peek: {
-            before: 0,
-            after: 50
-          }
-        },
-        992: {
-          perView: 3,
-          peek: {
-            before: 0,
-            after: 50
-          }
-        }
-      }
-    }).mount()
-
-    const forReviews = new Glide(".glide3", {
-      type: 'slider',
-      startAt: 0,
-      perView: 3,
-      gap: 0,
-      bound: true,
-      breakpoints: {
-        556: {
-          perView: 1
-        },
-        768: {
-          perView: 2
-        },
-        992: {
-          perView: 3
-        }
-      }
-    }).mount()
-
-    return () => {
-      forReviews.destroy();
-      forShows.destroy();
-      forRatings.destroy();
-    }
-
-  }, [])
-
   return (
     <>
       <HeroSection>
@@ -194,15 +100,11 @@ const Home = () => {
             <p className="fs-4 text-light" style={{ maxWidth: "600px" }}>Live from their sofa to yours. Get closer to your favorite artists, and never miss out.</p>
           </Main>
           <Ratings>
-            <div className="glide1">
-              <div className="glide__track" data-glide-el="track">
-                <div className="glide__slides">
-                  {Labels.map(label => (
-                    <Rating {...label} />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <Slide uniqueName="glide1">
+              {Labels.map(label => (
+                <Rating {...label} />
+              ))}
+            </Slide>
           </Ratings>
         </div>
       </HeroSection >
@@ -212,39 +114,24 @@ const Home = () => {
             <Heading>Upcoming Shows</Heading>
             <div>View All</div>
           </SectionStart>
-          <div className="glide2">
-            <div className="glide__track" data-glide-el="track">
-              <div className="glide__slides">
-                {/* this is the glide__slide */}
-                {shows.map((show, index) => (
-                  <ShowCard key={index} {...show} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <Slide uniqueName="glide2">
+            {shows.map((show, index) => (
+              <ShowCard key={index} {...show} />
+            ))}
+          </Slide>
         </div>
       </Shows>
       <Reviews>
         <div className="container" >
           <SectionStart style={{ position: "relative" }}>
             <Heading>Reviews</Heading>
-            <div>
-              3 of 12
-              </div>
+
           </SectionStart>
-          <div className="glide3">
-            <SlideContols className="container d-flex justify-content-end pe-5 me-5" data-glide-el="controls" style={{ color: "#E5C558" }}>
-              <span className="me-3" data-glide-dir="<"><i className="fas fa-arrow-left"></i></span>
-              <span className="me-5" data-glide-dir=">"><i className="fas fa-arrow-right"></i></span>
-            </SlideContols>
-            <div className="glide__track" data-glide-el="track">
-              <div className="glide__slides">
-                {reviews.map((review, index) => (
-                  <ReviewCard key={index}{...review} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <Slide uniqueName="glide3" controls={true}>
+            {reviews.map((review, index) => (
+              <ReviewCard key={index}{...review} />
+            ))}
+          </Slide>
         </div>
       </Reviews>
     </>
