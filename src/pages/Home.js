@@ -76,14 +76,6 @@ const SectionStart = styled.div`
   }
 `
 
-const SlideContols = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 0;
-`
-
-
-
 // **** styled components : End
 
 
@@ -92,6 +84,7 @@ const Home = () => {
 
   return (
     <>
+      {/* **** Hero Section : start */}
       <HeroSection>
         <Navbar />
         <div className="container">
@@ -100,7 +93,7 @@ const Home = () => {
             <p className="fs-4 text-light" style={{ maxWidth: "600px" }}>Live from their sofa to yours. Get closer to your favorite artists, and never miss out.</p>
           </Main>
           <Ratings>
-            <Slide uniqueName="glide1">
+            <Slide uniqueName="glide1" perView="4" autoplay={2000} after="100">
               {Labels.map(label => (
                 <Rating {...label} />
               ))}
@@ -108,26 +101,28 @@ const Home = () => {
           </Ratings>
         </div>
       </HeroSection >
+      {/* **** Shows section : start */}
       <Shows>
         <div className="container">
           <SectionStart>
             <Heading>Upcoming Shows</Heading>
             <div>View All</div>
           </SectionStart>
-          <Slide uniqueName="glide2">
+          <Slide uniqueName="glide2" perView="4" after="50">
             {shows.map((show, index) => (
               <ShowCard key={index} {...show} />
             ))}
           </Slide>
         </div>
       </Shows>
+      {/* **** Reviews Section : start */}
       <Reviews>
         <div className="container" >
           <SectionStart style={{ position: "relative" }}>
             <Heading>Reviews</Heading>
-
+            {/* the controlls will be dispayed here with css */}
           </SectionStart>
-          <Slide uniqueName="glide3" controls={true}>
+          <Slide uniqueName="glide3" perView="4" controls={true}>
             {reviews.map((review, index) => (
               <ReviewCard key={index}{...review} />
             ))}
